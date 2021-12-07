@@ -38,8 +38,9 @@ pipeline {
                     def ResultMessage = sh(script: 'uname -s', returnStdout: true)
                     
                     println ResultMessage
+                    jobDuration = (System.currentTimeMillis() - currentBuild.startTimeInMillis)/1000;
                     currentBuild.description = "Result build: " + ResultMessage \
-                                            + "<br> Duration:" + currentBuild.duration \
+                                            + "<br> Duration: " + jobDuration + " sec" \
                                             + "<br>Last successful build: " + "<a href=" + JENKINS_URL + "job/" + JOB_NAME + "/" + lastSuccessfulBuildID + ">" + lastSuccessfulBuildID + "</a>" \
                                             + "<br>Last build date: " + lastSuccessfulBuildDate
                 }
