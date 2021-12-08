@@ -1,3 +1,5 @@
+@Library('monitor-view-library') _
+
 pipeline {
     agent any
 
@@ -15,6 +17,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+        }
+        stage('Demo') {
+            steps {
+                sayHello 'Wilton'
             }
         }
         stage("Dashboard settings") {
