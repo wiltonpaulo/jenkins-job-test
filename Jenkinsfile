@@ -1,3 +1,7 @@
+// Load previous configured library by jenkins ui
+// @Library('monitor-view-library') _
+
+// Configure and load library
 library identifier: 'monitor-view-library@main',
     retriever: modernSCM([
       $class: 'GitSCMSource',
@@ -8,6 +12,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Startup Dashboard') {
+            steps {
+                startupDashboard()
+            }
+        }        
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -21,11 +30,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-            }
-        }
-        stage('Demo') {
-            steps {
-                sayHello 'Wilton'
             }
         }
         stage("Dashboard settings") {
