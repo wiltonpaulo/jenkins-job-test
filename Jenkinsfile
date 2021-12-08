@@ -11,12 +11,7 @@ library identifier: 'monitor-view-library@main',
 pipeline {
     agent any
 
-    stages {
-        stage('Startup Dashboard') {
-            steps {
-                startupDashboard()
-            }
-        }        
+    stages {   
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -33,4 +28,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            buildDashboardView()
+        }
+    }    
 }
