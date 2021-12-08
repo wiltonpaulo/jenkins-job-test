@@ -1,4 +1,8 @@
-@Library('monitor-view-library') _
+library identifier: 'monitor-view-library@main',
+    retriever: modernSCM([
+      $class: 'GitSCMSource',
+      remote: 'https://github.com/wiltonpaulo/monitor-view-library.git'
+])
 
 pipeline {
     agent any
